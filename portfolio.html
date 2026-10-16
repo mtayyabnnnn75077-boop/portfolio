@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tayyab Iqbal - Professional Web Developer Portfolio">
+<title>Tayyab Iqbal | Web Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+:root {
+  --bg:#030611;
+  --panel:#091329;
+  --panel2:#101c37;
+  --text:#f4f7ff;
+  --muted:#9ba8c5;
+  --cyan:#00eaff;
+  --blue:#287bff;
+  --purple:#a435ff;
+  --border:rgba(0,234,255,.2);
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body {
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  transition:background .3s,color .3s;
+}
+
+body.light {
+  --bg:#f0f4ff;
+  --panel:#fff;
+  --panel2:#e5ecfa;
+  --text:#111b35;
+  --muted:#596780;
+  --border:rgba(40,123,255,.22);
+}
+
+a {text-decoration:none;color:inherit}
+button,input,textarea {font:inherit}
+button {cursor:pointer}
+.container {width:90%;max-width:1150px;margin:auto}
+
+.gradient {
+  background:linear-gradient(100deg,var(--cyan),var(--blue),var(--purple));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.section {
+  padding:75px 0;
+  scroll-margin-top:75px;
+}
+
+.section-heading {margin-bottom:35px}
+.eyebrow {
+  color:var(--purple);
+  font-size:11px;
+  letter-spacing:3px;
+  font-weight:700;
+}
+.section-heading h2 {font-size:clamp(26px,4vw,36px);margin-top:7px}
+.section-heading p {color:var(--muted);margin-top:10px;max-width:600px;font-size:14px}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:12px 21px;
+  border:1px solid transparent;
+  border-radius:9px;
+  background:linear-gradient(110deg,var(--purple),var(--blue));
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  transition:.3s;
+}
+.btn:hover {transform:translateY(-4px);box-shadow:0 0 25px #287bff55}
+.btn-outline {background:transparent;border-color:var(--cyan);color:var(--text)}
+
+/* SIDEBAR */
+.sidebar {
+  position:fixed;
+  top:12px;
+  bottom:12px;
+  left:12px;
+  width:235px;
+  padding:23px 17px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:var(--panel);
+  z-index:1000;
+  display:flex;
+  flex-direction:column;
+  transition:transform .3s;
+  box-shadow:0 0 30px #0002;
+}
+
+.brand {
+  text-align:center;
+  font:800 25px 'Orbitron',sans-serif;
+  margin-bottom:22px;
+}
+.brand span {color:var(--cyan)}
+
+.profile {text-align:center;margin-bottom:20px}
+.profile img {
+  width:95px;height:95px;object-fit:cover;
+  border:3px solid var(--cyan);padding:3px;border-radius:50%;
+}
+.profile h3 {font-size:16px;margin-top:8px}
+.profile p {font-size:11px;color:var(--cyan);margin-top:4px}
+
+.search-box {
+  background:var(--panel2);
+  padding:10px 12px;
+  border-radius:25px;
+  display:flex;
+  gap:9px;
+  margin-bottom:16px;
+}
+.search-box input {
+  width:100%;min-width:0;background:transparent;
+  border:0;outline:0;color:var(--text);font-size:12px;
+}
+.search-box i {color:var(--muted)}
+
+.nav-links {display:grid;gap:5px}
+.nav-links a {
+  display:flex;align-items:center;gap:12px;
+  padding:10px 12px;border-radius:8px;
+  font-size:12px;color:var(--muted);transition:.25s;
+}
+.nav-links a i {width:17px;text-align:center}
+.nav-links a:hover,.nav-links a.active {
+  color:var(--cyan);
+  background:linear-gradient(90deg,#a435ff25,#00eaff12);
+}
+
+.socials {
+  display:flex;justify-content:center;gap:10px;
+  margin-top:auto;padding-top:20px;
+}
+.socials a {
+  width:34px;height:34px;display:grid;place-items:center;
+  border-radius:9px;background:var(--panel2);border:1px solid var(--border);
+  transition:.3s;
+}
+.socials a:hover {color:var(--cyan);transform:translateY(-4px)}
+
+/* MAIN NAVBAR */
+.main {margin-left:265px}
+.topbar {
+  height:65px;padding:0 5%;
+  display:flex;align-items:center;justify-content:flex-end;gap:13px;
+  position:sticky;top:0;z-index:900;
+  background:var(--bg);border-bottom:1px solid var(--border);
+}
+.availability {margin-right:auto;color:var(--muted);font-size:11px}
+.availability i {color:#37ed9c;margin-right:6px;font-size:9px}
+.icon-btn {
+  width:39px;height:39px;border:1px solid var(--border);
+  border-radius:10px;background:var(--panel);color:var(--text);
+}
+#menuBtn {display:none}
+
+/* HERO */
+.hero {
+  min-height:520px;padding:65px 5%;
+  display:grid;grid-template-columns:1.1fr .9fr;
+  align-items:center;gap:25px;
+  border-bottom:1px solid var(--border);
+  background:radial-gradient(ellipse at 85% 45%,#287bff20,transparent 50%),
+             radial-gradient(ellipse at 40% 0%,#a435ff13,transparent 50%);
+}
+.hero-tag {
+  display:inline-block;color:var(--cyan);border:1px solid var(--border);
+  border-radius:25px;padding:7px 12px;font-size:10px;
+  letter-spacing:1px;margin-bottom:20px;
+}
+.hero h1 {font-size:clamp(36px,5vw,59px);line-height:1.15;font-weight:800}
+.hero-copy {color:var(--muted);font-size:13px;line-height:1.9;margin:20px 0 25px;max-width:500px}
+.hero-actions {display:flex;gap:12px;flex-wrap:wrap}
+.stats {display:flex;gap:25px;margin-top:32px;flex-wrap:wrap}
+.stat strong {display:block;font-size:25px;color:var(--cyan)}
+.stat span {font-size:10px;color:var(--muted)}
+
+.hero-visual {min-height:340px;display:grid;place-items:center;position:relative}
+.orbit {
+  position:absolute;width:min(300px,90%);aspect-ratio:1;
+  border:1px solid var(--purple);border-radius:50%;
+  box-shadow:0 0 30px #a435ff20;
+  animation:rotate 18s linear infinite;
+}
+.orbit.two {width:min(340px,100%);border-color:var(--cyan);animation-direction:reverse}
+.hero-photo {
+  position:relative;z-index:2;width:min(230px,68%);aspect-ratio:1;
+  object-fit:cover;border-radius:50%;border:4px solid var(--cyan);
+  box-shadow:0 0 35px #287bff44;
+}
+.tech-bubble {
+  position:absolute;z-index:3;padding:12px;border-radius:13px;
+  background:var(--panel);border:1px solid var(--border);
+  color:var(--cyan);font-size:21px;box-shadow:0 0 20px #0002;
+}
+.b1 {top:5%;left:4%}.b2 {top:8%;right:1%}
+.b3 {bottom:5%;left:8%}.b4 {bottom:7%;right:5%}
+@keyframes rotate {to{transform:rotate(360deg)}}
+
+/* ABOUT */
+.about-grid {display:grid;grid-template-columns:1fr 1.5fr;gap:28px}
+.about-copy p {font-size:13px;line-height:1.9;color:var(--muted);margin:17px 0 22px}
+.feature-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.feature-card,.skill-card,.project-card,.service-card,.contact-card {
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:12px;padding:19px;transition:.3s;
+}
+.feature-card:hover,.skill-card:hover,.project-card:hover,.service-card:hover {
+  transform:translateY(-5px);border-color:var(--cyan);
+  box-shadow:0 8px 28px #00eaff0b;
+}
+.feature-card i,.service-card>i {font-size:24px;color:var(--cyan);margin-bottom:15px}
+.feature-card h3,.service-card h3 {font-size:13px;margin-bottom:8px}
+.feature-card p,.service-card p {font-size:11px;line-height:1.8;color:var(--muted)}
+
+/* SKILLS */
+.skills-grid {display:grid;grid-template-columns:repeat(2,1fr);gap:19px 30px}
+.skill-info {display:flex;justify-content:space-between;font-size:12px;margin-bottom:9px}
+.skill-info span:last-child {color:var(--cyan)}
+.progress {height:7px;border-radius:10px;background:var(--panel2);overflow:hidden}
+.progress span {
+  display:block;height:100%;width:0;
+  background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));
+  border-radius:10px;transition:width 1.3s ease;
+}
+.tools {display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.tools span {
+  padding:12px 14px;background:var(--panel2);
+  border:1px solid var(--border);border-radius:10px;
+  color:var(--cyan);font-size:20px;
+}
+
+/* PROJECTS */
+.projects-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.project-image {
+  height:145px;border-radius:8px;
+  display:grid;place-items:center;font-size:45px;
+  color:var(--cyan);
+  background:radial-gradient(circle at top right,#a435ff35,transparent 65%),var(--panel2);
+  border:1px solid var(--border);margin-bottom:17px;
+}
+.project-card h3 {font-size:15px;margin-bottom:9px}
+.project-card p {font-size:12px;line-height:1.8;color:var(--muted)}
+.tags {display:flex;flex-wrap:wrap;gap:6px;margin:13px 0}
+.tags span {font-size:10px;padding:5px 9px;background:var(--panel2);border-radius:15px;color:var(--cyan)}
+.project-link {font-size:12px;color:var(--cyan)}
+
+/* SERVICES */
+.services-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+
+/* EXPERIENCE */
+.timeline {border-left:2px solid var(--border);margin-left:10px;padding-left:25px}
+.timeline-item {position:relative;margin-bottom:30px}
+.timeline-item::before {
+  content:"";position:absolute;left:-33px;top:4px;width:13px;height:13px;
+  background:var(--cyan);border:4px solid var(--panel);
+  outline:1px solid var(--cyan);border-radius:50%;
+}
+.timeline-item h3 {font-size:15px}
+.timeline-item .date {color:var(--cyan);font-size:11px;margin:5px 0}
+.timeline-item p {font-size:12px;color:var(--muted);line-height:1.8}
+
+/* CONTACT */
+.contact-grid {display:grid;grid-template-columns:.8fr 1.2fr;gap:25px}
+.contact-info {display:grid;gap:13px}
+.contact-card {display:flex;align-items:center;gap:15px}
+.contact-card i {font-size:20px;color:var(--cyan);width:25px;text-align:center}
+.contact-card h4 {font-size:12px}
+.contact-card p {font-size:11px;color:var(--muted);overflow-wrap:anywhere}
+.contact-form {display:grid;gap:13px}
+.form-row {display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.contact-form input,.contact-form textarea {
+  width:100%;padding:13px 14px;border-radius:8px;
+  border:1px solid var(--border);background:var(--panel);
+  color:var(--text);outline:none;font-size:12px;
+}
+.contact-form input:focus,.contact-form textarea:focus {border-color:var(--cyan)}
+.contact-form textarea {min-height:140px;resize:vertical}
+#formMessage {font-size:12px;color:var(--cyan)}
+
+/* FOOTER */
+footer {padding:25px 5%;text-align:center;border-top:1px solid var(--border)}
+footer p {font-size:11px;color:var(--muted)}
+footer span {color:var(--cyan)}
+#backTop {
+  position:fixed;right:20px;bottom:20px;width:43px;height:43px;
+  background:linear-gradient(120deg,var(--purple),var(--blue));
+  color:#fff;border:0;border-radius:12px;display:none;z-index:800;
+}
+#backTop.show {display:block}
+
+/* RESPONSIVE */
+@media(max-width:1100px) {
+  .sidebar {width:215px}
+  .main {margin-left:240px}
+  .hero {grid-template-columns:1fr 1fr}
+  .feature-grid {grid-template-columns:1fr}
+  .services-grid {grid-template-columns:repeat(2,1fr)}
+  .projects-grid {grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:760px) {
+  .sidebar {transform:translateX(-120%);width:260px}
+  .sidebar.open {transform:translateX(0)}
+  .main {margin-left:0}
+  #menuBtn {display:inline-grid;place-items:center}
+  .hero {grid-template-columns:1fr;text-align:center;padding-top:55px}
+  .hero-copy {margin-left:auto;margin-right:auto}
+  .hero-actions,.stats {justify-content:center}
+  .hero-visual {grid-row:1;min-height:300px}
+  .hero-photo {width:190px}
+  .orbit {width:255px}
+  .orbit.two {width:285px}
+  .about-grid,.contact-grid {grid-template-columns:1fr}
+  .feature-grid {grid-template-columns:repeat(3,1fr)}
+  .skills-grid {grid-template-columns:1fr}
+  .section {padding:55px 0}
+  .topbar {padding:0 5%}
+}
+
+@media(max-width:520px) {
+  .feature-grid,.projects-grid,.services-grid {grid-template-columns:1fr}
+  .feature-card {padding:20px}
+  .form-row {grid-template-columns:1fr}
+  .stats {gap:20px}
+  .stat strong {font-size:22px}
+  .hero h1 {font-size:38px}
+  .tech-bubble {font-size:17px;padding:9px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="#home">TAYYAB<span>.DEV</span></a>
+
+  <div class="profile">
+    <img src="https://i.pravatar.cc/300?img=12" alt="Tayyab Iqbal profile photo">
+    <h3>Tayyab Iqbal</h3>
+    <p>Professional Web Developer</p>
+  </div>
+
+  <div class="search-box">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input id="siteSearch" type="search" placeholder="Search sections..." aria-label="Search sections">
+  </div>
+
+  <nav class="nav-links">
+    <a class="active" href="#home"><i class="fa-solid fa-house"></i>Home</a>
+    <a href="#about"><i class="fa-solid fa-user"></i>About</a>
+    <a href="#skills"><i class="fa-solid fa-code"></i>Skills</a>
+    <a href="#projects"><i class="fa-solid fa-folder-open"></i>Projects</a>
+    <a href="#services"><i class="fa-solid fa-briefcase"></i>Services</a>
+    <a href="#experience"><i class="fa-solid fa-clock"></i>Experience</a>
+    <a href="#contact"><i class="fa-solid fa-envelope"></i>Contact</a>
+  </nav>
+
+  <div class="socials">
+    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<header class="topbar">
+  <span class="availability"><i class="fa-solid fa-circle"></i>Available for work</span>
+  <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+  <button class="icon-btn" id="menuBtn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <span class="hero-tag"><i class="fa-solid fa-circle-dot"></i> PROFESSIONAL WEB DEVELOPER</span>
+    <h1>Building Digital <span class="gradient">Experiences</span></h1>
+    <p class="hero-copy">I'm a passionate web developer who loves creating modern, responsive and user-friendly websites. I turn ideas into digital experiences that make an impact.</p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn">View Projects <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>50+</strong><span>Projects</span></div>
+      <div class="stat"><strong>3+</strong><span>Years Experience</span></div>
+      <div class="stat"><strong>100%</strong><span>Responsive</span></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="orbit"></div>
+    <div class="orbit two"></div>
+    <img class="hero-photo" src="https://i.pravatar.cc/500?img=12" alt="Developer portrait">
+    <div class="tech-bubble b1"><i class="fa-brands fa-html5"></i></div>
+    <div class="tech-bubble b2"><i class="fa-brands fa-react"></i></div>
+    <div class="tech-bubble b3"><i class="fa-brands fa-js"></i></div>
+    <div class="tech-bubble b4"><i class="fa-brands fa-css3-alt"></i></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section container" id="about">
+  <div class="section-heading">
+    <span class="eyebrow">ABOUT ME</span>
+    <h2>Who <span class="gradient">I Am</span></h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-copy">
+      <p>I'm Tayyab Iqbal, a web developer passionate about technology, creative design and modern web development. I enjoy building websites that combine attractive visuals with reliable functionality.</p>
+      <p>My goal is to create clean, accessible and responsive digital experiences while continuously improving my development skills.</p>
+      <a class="btn btn-outline" href="#contact">Let's Work Together <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="feature-grid">
+      <article class="feature-card">
+        <i class="fa-solid fa-code"></i>
+        <h3>Modern Development</h3>
+        <p>Clean, efficient and maintainable code for modern websites.</p>
+      </article>
+      <article class="feature-card">
+        <i class="fa-solid fa-palette"></i>
+        <h3>Creative UI</h3>
+        <p>Beautiful interfaces focused on usability and user experience.</p>
+      </article>
+      <article class="feature-card">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <h3>Responsive Design</h3>
+        <p>Layouts designed to work across mobile, tablet and desktop.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section container" id="skills">
+  <div class="section-heading">
+    <span class="eyebrow">MY EXPERTISE</span>
+    <h2>Technical <span class="gradient">Skills</span></h2>
+    <p>Technologies I use to bring web projects to life.</p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-info"><span>HTML5</span><span>95%</span></div>
+      <div class="progress"><span data-width="95%"></span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-info"><span>CSS3</span><span>92%</span></div>
+      <div class="progress"><span data-width="92%"></span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-info"><span>JavaScript</span><span>88%</span></div>
+      <div class="progress"><span data-width="88%"></span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-info"><span>Bootstrap</span><span>90%</span></div>
+      <div class="progress"><span data-width="90%"></span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-info"><span>React</span><span>82%</span></div>
+      <div class="progress"><span data-width="82%"></span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-info"><span>PHP / Laravel</span><span>80%</span></div>
+      <div class="progress"><span data-width="80%"></span></div>
+    </div>
+  </div>
+
+  <div class="tools">
+    <span title="HTML5"><i class="fa-brands fa-html5"></i></span>
+    <span title="CSS3"><i class="fa-brands fa-css3-alt"></i></span>
+    <span title="JavaScript"><i class="fa-brands fa-js"></i></span>
+    <span title="React"><i class="fa-brands fa-react"></i></span>
+    <span title="Git"><i class="fa-brands fa-git-alt"></i></span>
+    <span title="GitHub"><i class="fa-brands fa-github"></i></span>
+    <span title="Bootstrap"><i class="fa-brands fa-bootstrap"></i></span>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section container" id="projects">
+  <div class="section-heading">
+    <span class="eyebrow">MY WORK</span>
+    <h2>Featured <span class="gradient">Projects</span></h2>
+    <p>A selection of sample projects. Replace these with your real work and repository links.</p>
+  </div>
+
+  <div class="projects-grid">
+    <article class="project-card">
+      <div class="project-image"><i class="fa-solid fa-cart-shopping"></i></div>
+      <h3>E-Commerce Website</h3>
+      <p>A modern online shopping experience with product pages and responsive layouts.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <a class="project-link" href="#contact">Discuss Project <i class="fa-solid fa-arrow-right"></i></a>
+    </article>
+
+    <article class="project-card">
+      <div class="project-image"><i class="fa-solid fa-chart-line"></i></div>
+      <h3>Analytics Dashboard</h3>
+      <p>A dashboard concept for presenting business information and statistics.</p>
+      <div class="tags"><span>React</span><span>CSS</span><span>Charts</span></div>
+      <a class="project-link" href="#contact">Discuss Project <i class="fa-solid fa-arrow-right"></i></a>
+    </article>
+
+    <article class="project-card">
+      <div class="project-image"><i class="fa-solid fa-laptop-code"></i></div>
+      <h3>Business Website</h3>
+      <p>A professional website concept with service information and contact details.</p>
+      <div class="tags"><span>HTML</span><span>Bootstrap</span><span>JavaScript</span></div>
+      <a class="project-link" href="#contact">Discuss Project <i class="fa-solid fa-arrow-right"></i></a>
+    </article>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section container" id="services">
+  <div class="section-heading">
+    <span class="eyebrow">WHAT I DO</span>
+    <h2>My <span class="gradient">Services</span></h2>
+  </div>
+
+  <div class="services-grid">
+    <article class="service-card">
+      <i class="fa-solid fa-code"></i>
+      <h3>Web Development</h3>
+      <p>Modern websites built with clean code and practical functionality.</p>
+    </article>
+    <article class="service-card">
+      <i class="fa-solid fa-pen-ruler"></i>
+      <h3>UI / UX Design</h3>
+      <p>Clear, attractive interfaces designed around user needs.</p>
+    </article>
+    <article class="service-card">
+      <i class="fa-solid fa-mobile-screen"></i>
+      <h3>Responsive Design</h3>
+      <p>Mobile-friendly layouts for different screen sizes.</p>
+    </article>
+    <article class="service-card">
+      <i class="fa-solid fa-screwdriver-wrench"></i>
+      <h3>Website Maintenance</h3>
+      <p>Updates, improvements and troubleshooting for existing sites.</p>
+    </article>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section container" id="experience">
+  <div class="section-heading">
+    <span class="eyebrow">MY JOURNEY</span>
+    <h2>Experience & <span class="gradient">Learning</span></h2>
+  </div>
+
+  <div class="timeline">
+    <article class="timeline-item">
+      <h3>Web Development Projects</h3>
+      <div class="date">Personal Projects</div>
+      <p>Building websites and practicing front-end development, responsive layouts and interactive features.</p>
+    </article>
+    <article class="timeline-item">
+      <h3>Frontend Development</h3>
+      <div class="date">Skills Development</div>
+      <p>Learning and applying HTML, CSS, JavaScript and modern web development tools.</p>
+    </article>
+    <article class="timeline-item">
+      <h3>Continuous Learning</h3>
+      <div class="date">Ongoing</div>
+      <p>Improving coding practices, exploring new technologies and developing portfolio projects.</p>
+    </article>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section container" id="contact">
+  <div class="section-heading">
+    <span class="eyebrow">GET IN TOUCH</span>
+    <h2>Contact <span class="gradient">Me</span></h2>
+    <p>Have a project idea? Send a message to discuss your requirements.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-card">
+        <i class="fa-solid fa-envelope"></i>
+        <div><h4>Email</h4><p>your-email@example.com</p></div>
+      </div>
+      <div class="contact-card">
+        <i class="fa-solid fa-phone"></i>
+        <div><h4>Phone</h4><p>+92 YOUR PHONE NUMBER</p></div>
+      </div>
+      <div class="contact-card">
+        <i class="fa-solid fa-location-dot"></i>
+        <div><h4>Location</h4><p>Karachi, Pakistan</p></div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+      <input type="text" name="subject" placeholder="Subject" required>
+      <textarea name="message" placeholder="Write your message..." required></textarea>
+      <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+      <p id="formMessage" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> <span>Tayyab Iqbal</span>. All rights reserved.</p>
+</footer>
+
+</main>
+
+<button id="backTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+/* MOBILE MENU */
+const sidebar = document.getElementById('sidebar');
+const menuBtn = document.getElementById('menuBtn');
+
+menuBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    document.querySelectorAll('.nav-links a').forEach(item => {
+      item.classList.remove('active');
+    });
+    link.classList.add('active');
+  });
+});
+
+/* THEME TOGGLE */
+const themeToggle = document.getElementById('themeToggle');
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  themeToggle.innerHTML = isLight
+    ? '<i class="fa-solid fa-sun"></i>'
+    : '<i class="fa-solid fa-moon"></i>';
+});
+
+/* SEARCH FOR SECTIONS */
+const siteSearch = document.getElementById('siteSearch');
+
+siteSearch.addEventListener('keydown', event => {
+  if (event.key === 'Enter') {
+    const query = siteSearch.value.trim().toLowerCase();
+
+    const sections = [...document.querySelectorAll('main section')];
+    const match = sections.find(section => {
+      const heading = section.querySelector('h1,h2');
+      return section.id.includes(query) ||
+        (heading && heading.textContent.toLowerCase().includes(query));
+    });
+
+    if (match) {
+      match.scrollIntoView({ behavior: 'smooth' });
+      sidebar.classList.remove('open');
+    } else {
+      alert('Section not found. Try Home, About, Skills, Projects, Services, Experience or Contact.');
+    }
+  }
+});
+
+/* SKILL BAR ANIMATION */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.progress span').forEach(bar => {
+        bar.style.width = bar.dataset.width;
+      });
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('#skills .skill-card').forEach(card => {
+  observer.observe(card);
+});
+
+/* BACK TO TOP */
+const backTop = document.getElementById('backTop');
+
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('show', window.scrollY > 350);
+});
+
+backTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* UPDATE FOOTER YEAR */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* CONTACT FORM FRONTEND DEMO */
+document.getElementById('contactForm').addEventListener('submit', event => {
+  event.preventDefault();
+
+  const formMessage = document.getElementById('formMessage');
+  formMessage.textContent =
+    'Your form looks good, but sending messages requires an email service or backend.';
+
+  // This standalone demo does not send or store the message.
+});
+</script>
+
+</body>
+</html>
